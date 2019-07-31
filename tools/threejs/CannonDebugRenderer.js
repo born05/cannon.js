@@ -1,5 +1,3 @@
-/* global CANNON,THREE,Detector */
-
 import THREE from 'three';
 import CANNON from 'cannon';
 
@@ -10,7 +8,7 @@ import CANNON from 'cannon';
  * @param {CANNON.World} world
  * @param {object} [options]
  */
-export default CannonDebugRenderer = function(scene, world, options){
+const CannonDebugRenderer = function(scene, world, options){
     options = options || {};
 
     this.scene = scene;
@@ -240,3 +238,5 @@ CannonDebugRenderer.prototype = {
         }
     }
 };
+
+export default CannonDebugRenderer;
