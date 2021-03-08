@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { Geometry, Face3 } from 'three/examples/jsm/deprecated/Geometry';
 import CANNON from 'cannon';
 
 /**
@@ -123,7 +124,7 @@ CannonDebugRenderer.prototype = {
 
         case CANNON.Shape.types.CONVEXPOLYHEDRON:
             // Create mesh
-            var geo = new THREE.Geometry();
+            var geo = new Geometry();
 
             // Add vertices
             for (var i = 0; i < shape.vertices.length; i++) {
@@ -139,7 +140,7 @@ CannonDebugRenderer.prototype = {
                 for (var j = 1; j < face.length - 1; j++) {
                     var b = face[j];
                     var c = face[j + 1];
-                    geo.faces.push(new THREE.Face3(a, b, c));
+                    geo.faces.push(new Face3(a, b, c));
                 }
             }
             geo.computeBoundingSphere();
@@ -150,7 +151,7 @@ CannonDebugRenderer.prototype = {
             break;
 
         case CANNON.Shape.types.TRIMESH:
-            var geometry = new THREE.Geometry();
+            var geometry = new Geometry();
             var v0 = this.tmpVec0;
             var v1 = this.tmpVec1;
             var v2 = this.tmpVec2;
@@ -162,7 +163,7 @@ CannonDebugRenderer.prototype = {
                     new THREE.Vector3(v2.x, v2.y, v2.z)
                 );
                 var j = geometry.vertices.length - 3;
-                geometry.faces.push(new THREE.Face3(j, j+1, j+2));
+                geometry.faces.push(new Face3(j, j+1, j+2));
             }
             geometry.computeBoundingSphere();
             geometry.computeFaceNormals();
@@ -171,7 +172,7 @@ CannonDebugRenderer.prototype = {
             break;
 
         case CANNON.Shape.types.HEIGHTFIELD:
-            var geometry = new THREE.Geometry();
+            var geometry = new Geometry();
 
             var v0 = this.tmpVec0;
             var v1 = this.tmpVec1;
@@ -192,7 +193,7 @@ CannonDebugRenderer.prototype = {
                             new THREE.Vector3(v2.x, v2.y, v2.z)
                         );
                         var i = geometry.vertices.length - 3;
-                        geometry.faces.push(new THREE.Face3(i, i+1, i+2));
+                        geometry.faces.push(new Face3(i, i+1, i+2));
                     }
                 }
             }
